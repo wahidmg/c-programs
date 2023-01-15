@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node* head; // global variable - pointer to head node.
+
+// Function to create a new node and add to the list
+void insert(int data) {
+    struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
+    temp->data = data;
+    temp->next = head;
+    head = temp;
+}
+
+// Function to display the list
+void display() {
+    struct Node* temp = head;
+    while(temp != NULL) {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+    printf("\n");
+}
+
+int main() {
+    head = NULL; // empty list. set head as NULL. 
+    insert(2); 
+    insert(4);
+    insert(6);
+    insert(8); 
+    printf("The linked list is: ");
+    display();
+    return 0;
+}
